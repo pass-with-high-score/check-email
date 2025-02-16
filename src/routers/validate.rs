@@ -14,6 +14,8 @@ async fn check_email_exists(body: Json<CheckEmailRequest>) -> impl Responder {
 
     let result = check_email(&input).await;
 
+    println!("Is reachable: {:?}", result.is_reachable);
+
     // Convert the Reachable enum to a boolean.
     let is_reachable_bool = match result.is_reachable {
         Reachable::Risky => true,
@@ -24,6 +26,7 @@ async fn check_email_exists(body: Json<CheckEmailRequest>) -> impl Responder {
     let response = CheckEmailOutputResponse {
         input: body.email.clone(),
         is_reachable: is_reachable_bool,
+        reachable: result.is_reachable.to_string(),
     };
 
     HttpResponse::Ok().json(response)

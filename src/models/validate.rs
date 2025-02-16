@@ -5,6 +5,7 @@ use validator::Validate;
 pub struct CheckEmailOutputResponse {
     pub input: String,
     pub is_reachable: bool,
+    pub reachable: String,
 }
 
 #[derive(Validate, Deserialize, Serialize)]

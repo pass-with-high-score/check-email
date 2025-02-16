@@ -9,6 +9,7 @@ pub fn validate_routes(cfg: &mut actix_web::web::ServiceConfig) {
 
 #[post("/check-email")]
 async fn check_email_exists(body: Json<CheckEmailRequest>) -> impl Responder {
+    println!("Checking email: {:?}", body.email);
     let input = CheckEmailInput::new(body.email.clone());
 
     let result = check_email(&input).await;

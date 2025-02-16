@@ -22,8 +22,8 @@
 
 2. **Build and run the Docker container**:
    ```sh
-   docker-compose build
-   docker-compose up
+   docker compose build
+   docker compose up
    ```
 
 3. The application will be available at `http://127.0.0.1:8080`.

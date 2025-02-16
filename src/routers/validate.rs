@@ -23,10 +23,17 @@ async fn check_email_exists(body: Json<CheckEmailRequest>) -> impl Responder {
         _ => false,
     };
 
+    let reachable = match result.is_reachable {
+        Reachable::Risky => "Risky",
+        Reachable::Safe => "Safe",
+        Reachable::Unknown => "Unknown",
+        Reachable::Invalid => "Invalid",
+    };
+
     let response = CheckEmailOutputResponse {
         input: body.email.clone(),
         is_reachable: is_reachable_bool,
-        reachable: result.is_reachable.to_string(),
+        reachable: reachable.to_string(),
     };
 
     HttpResponse::Ok().json(response)

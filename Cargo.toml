@@ -1,0 +1,13 @@
+[package]
+name = "check-email"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = "4.9.0"
+log = "0.4.25"
+serde = { version = "1.0.217", features = ["derive"] }
+validator = { version = "0.20.0", features = ["derive"] }
+futures = "0.3.31"
+actix-service = "2.0.2"
+check-if-email-exists = "0.9.1"
